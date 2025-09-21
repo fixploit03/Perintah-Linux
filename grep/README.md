@@ -83,7 +83,7 @@ Menampilkan baris yang TIDAK mengandung pola.
 grep -v "comment" config.txt
 ```
 
-Menampilkan semua baris kecuali yang mengandung `comment` di dalam file `config.txt`.
+Output: Akan menampilkan semua baris kecuali yang mengandung `comment` di dalam file `config.txt`.
 
 #### 3. `-n` (line number)
 
@@ -136,4 +136,74 @@ Output:
 config.py
 install.py
 setup.py
+```
+
+### Option Lanjutan
+
+#### 1. `-r` atau `-R` (recursive)
+
+Mencari dalam direktori dan subdirektori.
+
+```
+# Mencari kata "function" secara rekursif di dalam direktori "/home/user/project/"
+grep -r "function" /home/user/project/
+
+# Mencari kata "import" secara rekursif di dalam direktori saat ini
+grep -R "import" .
+```
+
+#### 2. `-w` (word boundary)
+
+Mencari kata utuh, bukan sebagian kata.
+
+```
+grep -w "cat" file.txt
+```
+
+Output: Akan menemukan: `cat` tapi tidak `category` atau `concatenate`.
+
+#### 3. `-x` (exact line)
+
+Mencocokkan seluruh baris.
+
+```
+grep -x "exact line" file.txt
+```
+
+#### 4. `-A NUM` (after)
+
+Menampilkan NUM baris setelah baris yang cocok.
+
+```
+grep -A 3 "error" log.txt
+```
+
+Output: Akan menampilkan baris `error + 3 baris berikutnya`.
+
+#### 5. `-B NUM` (before)
+
+Menampilkan NUM baris sebelum baris yang cocok.
+
+```
+grep -B 2 "error" log.txt
+```
+
+Output: Akan menampilkan `2 baris sebelum + baris error`.
+
+#### 6. `-C NUM` (context)
+
+Menampilkan NUM baris sebelum dan setelah.
+
+```
+grep -C 2 "error" log.txt
+```
+
+Output: Sama dengan `-A 2 -B 2`.
+
+#### 7. `--color`
+
+Mewarnai hasil pencarian.
+
+```
+grep --color=auto "pattern" file.txt
 ```
