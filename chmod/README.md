@@ -1,38 +1,38 @@
 # chmod
 
-## Apa itu chmod?
+## A. Apa itu chmod?
 
 `chmod` adalah singkatan dari "Change Mode". Ini adalah perintah fundamental di Linux/Unix untuk mengubah permissions (izin akses) file dan direktori.
 
-## Fungsi Utama chmod:
+## B. Fungsi Utama chmod:
 
 - Mengatur siapa yang bisa membaca (read) file/direktori
 - Mengatur siapa yang bisa menulis (write) file/direktori
 - Mengatur siapa yang bisa menjalankan (execute) file/direktori
 - Mengontrol keamanan sistem file
 
-## Mengapa chmod Penting?
+## C. Mengapa chmod Penting?
 
 - **Keamanan:** Melindungi file sensitif dari akses tidak sah
 - **Privacy:** Mengatur file pribadi agar tidak bisa dibaca orang lain
 - **Functionality:** Membuat script bisa dijalankan
 - **System Administration:** Mengatur akses sistem secara proper
 
-## Konsep File Permissions di Linux
+## D. Konsep File Permissions di Linux
 
 ### Tiga Jenis Permission:
 
-- Read (r): Izin untuk membaca file atau melihat isi direktori
-- Write (w): Izin untuk menulis/mengubah file atau menambah/hapus file dalam direktori
-- Execute (x): Izin untuk menjalankan file atau masuk ke direktori
+- Read (`r`): Izin untuk membaca file atau melihat isi direktori
+- Write (`w`): Izin untuk menulis/mengubah file atau menambah/hapus file dalam direktori
+- Execute (`x`): Izin untuk menjalankan file atau masuk ke direktori
 
 ### Tiga Kategori User:
 
-- Owner (u): Pemilik file/direktori
-- Group (g): Grup yang memiliki file/direktori
-- Others (o): User lain di sistem
+- Owner (`u`): Pemilik file/direktori
+- Group (`g`): Grup yang memiliki file/direktori
+- Others (`o`): User lain di sistem
 
-## Melihat Permissions
+## E. Melihat Permissions
 
 ```
 ls -l file.txt
@@ -44,7 +44,7 @@ Output:
 -rwxr-xr-- 1 fixploit03 fixploit03 1568 Sep 21 19:46 file.txt
 ```
 
-## Format Output:
+## F. Format Output:
 
 ```
 -rwxr-xr--
@@ -55,7 +55,7 @@ Output:
 └────────── File type (- = file, d = directory)
 ```
 
-## Memahami Permission Format
+## G. Memahami Permission Format
 
 ### Representasi Huruf:
 
@@ -76,9 +76,9 @@ Output:
 - **Others:** `r--` (read only = 4)
 - **Numerik:** 754
 
-## Sintaks chmod
+## H. Sintaks chmod
 
-### Sintaks Dasar:
+### 1. Sintaks Dasar:
 
 ```
 chmod [OPTION] MODE FILE...
@@ -90,7 +90,7 @@ chmod [OPTION] MODE FILE...
 - **MODE:** Permission yang ingin diset (numerik atau simbolik)
 - **FILE:** File atau direktori target
 
-## Metode Numerik (Octal)
+## I. Metode Numerik (Octal)
 
 ### Sistem Octal (Base 8):
 
@@ -98,12 +98,12 @@ Menggunakan angka `0-7` untuk merepresentasikan kombinasi permissions.
 
 **Nilai Dasar:**
 
-- `4` = Read (r)
-- `2` = Write (w)
-- `1` = Execute (x)
-- `0` = No permission (-)
+- `4` = Read (`r`)
+- `2` = Write (`w`)
+- `1` = Execute (`x`)
+- `0` = No permission (`-`)
 
-## Kombinasi Umum:
+## J. Kombinasi Umum:
 
 ```
 7 = 4+2+1 = rwx (read + write + execute)
@@ -116,7 +116,7 @@ Menggunakan angka `0-7` untuk merepresentasikan kombinasi permissions.
 0 = 0+0+0 = --- (no permission)
 ```
 
-## Format Tiga Digit:
+## K. Format Tiga Digit:
 
 ```
 chmod ABC file
@@ -126,7 +126,7 @@ chmod ABC file
 - `B` = Group permissions  
 - `C` = Others permissions
 
-## Contoh Penggunaan Numerik:
+## L. Contoh Penggunaan Numerik:
 
 ```
 # 755: Owner=rwx, Group=r-x, Others=r-x
@@ -145,7 +145,7 @@ chmod 666 shared_file.txt
 chmod 777 file.txt
 ```
 
-## Tabel Referensi Cepat:
+## M. Tabel Referensi Cepat:
 
 | Permission  | Numerik | Simbolik
 |:--:|:--:|:--:|
@@ -159,7 +159,7 @@ chmod 777 file.txt
 | Full access | 7 | `rwx` |
 
 
-## Metode Simbolik
+## N. Metode Simbolik
 
 ### Format Simbolik:
 
@@ -192,7 +192,7 @@ chmod [ugoa][+-=][rwx] file
 - `w`: write
 - `x`: execute
 
-## Contoh Simbolik:
+## O. Contoh Simbolik:
 
 ```
 # Menambah execute permission untuk owner
@@ -214,7 +214,7 @@ chmod o-x script.sh
 chmod u+rw,g+r,o-rwx file.txt
 ```
 
-## Option-option chmod
+## P. Option-option chmod
 
 ### 1. `-R` atau `--recursive`
 
@@ -259,7 +259,7 @@ Mencegah operasi rekursif pada root directory (keamanan).
 chmod --preserve-root -R 777 /
 ```
 
-## Contoh Praktis
+## Q. Contoh Praktis
 
 ### 1. Script dan Executable Files
 
@@ -328,10 +328,9 @@ chmod 600 backup.tar.gz
 chmod 644 /tmp/tempfile.txt
 ```
 
-## Special Permissions
+## R. Special Permissions
 
-### Setuid (Set User ID) - 4
-
+### 1. Setuid (Set User ID) - 4
 
 File dijalankan dengan permission owner, bukan user yang menjalankan.
 
@@ -344,7 +343,7 @@ ls -l /usr/bin/passwd
 # -rwsr-xr-x (perhatikan 's' di posisi execute owner)
 ```
 
-### Setgid (Set Group ID) - 2
+### 2. Setgid (Set Group ID) - 2
 
 File dijalankan dengan permission group, atau file baru dalam direktori mengikuti group direktori.
 
@@ -359,7 +358,7 @@ chmod 2755 program
 chmod g+s /shared/directory/
 ```
 
-### Sticky Bit - 1
+### 3. Sticky Bit - 1
 
 Hanya owner file yang bisa menghapus file dalam direktory (biasanya untuk /tmp).
 
@@ -372,7 +371,7 @@ ls -ld /tmp
 # drwxrwxrwt (perhatikan 't' di akhir)
 ```
 
-### Kombinasi Special Permissions
+### 4. Kombinasi Special Permissions
 
 ```
 # Format: SABC dimana S=special permissions (4+2+1)
@@ -383,7 +382,7 @@ chmod 6755 file  # setuid+setgid + 755
 chmod 7755 dir   # setuid+setgid+sticky + 755
 ```
 
-## Best Practices
+## S. Best Practices
 
 ### 1. Prinsip Least Privilege
 
@@ -446,7 +445,7 @@ chmod 600 /etc/shadow
 chmod 600 ~/.ssh/id_rsa
 ```
 
-## Troubleshooting
+## T. Troubleshooting
 
 ### 1. Permission Denied Errors
 
