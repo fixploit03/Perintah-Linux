@@ -382,3 +382,118 @@ chmod 1755 dir   # sticky + 755
 chmod 6755 file  # setuid+setgid + 755
 chmod 7755 dir   # setuid+setgid+sticky + 755
 ```
+
+## Best Practices
+
+### 1. Prinsip Least Privilege
+
+Berikan permission minimum yang dibutuhkan.
+
+```
+# BAIK: Dokumen standar
+chmod 644 document.txt
+
+# BURUK: Terlalu permissive
+chmod 777 document.txt
+```
+
+### 2. Permission untuk Berbagai Jenis File
+
+```
+# Executable scripts
+chmod 755 script.sh
+
+# Configuration files  
+chmod 644 config.conf
+
+# Private keys
+chmod 600 private_key.pem
+
+# Public keys
+chmod 644 public_key.pub
+
+# Log files
+chmod 644 application.log
+```
+
+### 3. Web Server Permissions
+
+```
+# HTML/CSS/JS files
+chmod 644 *.html *.css *.js
+
+# PHP files
+chmod 644 *.php
+
+# Upload directories
+chmod 755 uploads/
+
+# Configuration files
+chmod 600 config.php
+```
+
+### 4. Backup dan Security
+
+```
+# Backup files - owner only
+chmod 600 backup.tar.gz
+
+# System configuration
+chmod 644 /etc/config.conf
+
+# Sensitive files
+chmod 600 /etc/shadow
+chmod 600 ~/.ssh/id_rsa
+```
+
+## Troubleshooting
+
+### 1. Permission Denied Errors
+
+```
+# Problem: Cannot execute script
+# Solution:
+chmod +x script.sh
+
+# Problem: Cannot write to file
+# Solution:
+chmod u+w filename
+
+# Problem: Cannot access directory
+# Solution:
+chmod u+x directory/
+```
+
+### 2. Web Server Issues
+
+```
+# Problem: 403 Forbidden
+# Check: File dan directory permissions
+chmod 644 index.html
+chmod 755 /var/www/html/
+
+# Problem: Cannot write uploads
+# Solution:
+chmod 755 uploads/
+# atau
+chmod 777 uploads/ # Hati-hati dengan security!
+```
+
+### 3. Common Mistakes
+
+```
+# SALAH: Menghapus execute dari direktori
+chmod 644 directory/
+# FIX:
+chmod 755 directory/
+
+# SALAH: Membuat file terlalu permissive
+chmod 777 config.php
+# FIX:
+chmod 644 config.php
+
+# SALAH: Menghapus read permission dari file yang dibutuhkan
+chmod 000 important_file.txt
+# FIX:
+chmod 644 important_file.txt
+```
