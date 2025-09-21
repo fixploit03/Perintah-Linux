@@ -207,3 +207,69 @@ Mewarnai hasil pencarian.
 ```
 grep --color=auto "pattern" file.txt
 ```
+
+## F. Regular Expression dengan grep
+
+### Metacharacters Dasar
+
+#### `.` (titik)
+
+Mencocokkan karakter apapun.
+
+```
+grep "h.llo" file.txt
+```
+
+Output: Akan menemukan: `hello`, `hallo`, `hillo`.
+
+#### 2. `^` (awal baris)
+
+
+Mencocokkan awal baris.
+
+```
+grep "^root" /etc/passwd
+```
+
+Output: Akan menampilkan baris yang dimulai dengan `root`.
+
+#### 3. `$` (akhir baris)
+
+Mencocokkan akhir baris.
+
+```
+grep "bash$" /etc/passwd
+```
+
+Output: Akan menampilkan baris yang diakhiri dengan `bash`.
+
+#### 4. `*` (nol atau lebih)
+
+Mencocokkan nol atau lebih karakter sebelumnya.
+
+```
+grep "ab*c" file.txt
+```
+
+Output: Akan menemukan: `ac`, `abc`, `abbc`, `abbbc`.
+
+#### 5. `[]` (character class)
+
+Mencocokkan salah satu karakter dalam kurung.
+
+```
+grep "[aeiou]" file.txt          # Vokal
+grep "[0-9]" file.txt            # Digit
+grep "[A-Z]" file.txt            # Huruf besar
+grep "[a-zA-Z0-9]" file.txt      # Alfanumerik
+```
+
+#### 6. `[^]` (negated character class)
+
+Mencocokkan karakter yang TIDAK ada dalam kurung.
+
+```
+grep "[^0-9]" file.txt
+```
+
+Output: Akan menampilkan karakter non-digit.
