@@ -1,7 +1,5 @@
 # grep
 
-![](https://github.com/fixploit03/Perintah-Linux/blob/main/grep/grep.png)
-
 ## A. Apa itu grep?
 
 `grep` adalah singkatan dari "Global Regular Expression Print". Ini adalah perintah yang sangat powerful di Linux/Unix untuk mencari teks atau pola tertentu dalam file atau output perintah lain.
