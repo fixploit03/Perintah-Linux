@@ -1,7 +1,5 @@
 # grep
 
-![](https://github.com/fixploit03/Perintah-Linux/blob/main/grep/perintah%20grep.png)
-
 ## A. Apa itu grep?
 
 `grep` adalah singkatan dari "Global Regular Expression Print". Ini adalah perintah yang sangat powerful di Linux/Unix untuk mencari teks atau pola tertentu dalam file atau output perintah lain.
@@ -178,7 +176,7 @@ Menampilkan NUM baris setelah baris yang cocok.
 grep -A 3 "error" log.txt
 ```
 
-Output: Akan menampilkan baris `error + 3 baris berikutnya`.
+Output: Akan menampilkan baris error + 3 baris berikutnya.
 
 #### 5. `-B NUM` (before)
 
@@ -188,7 +186,7 @@ Menampilkan NUM baris sebelum baris yang cocok.
 grep -B 2 "error" log.txt
 ```
 
-Output: Akan menampilkan `2 baris sebelum + baris error`.
+Output: Akan menampilkan 2 baris sebelum + baris error.
 
 #### 6. `-C NUM` (context)
 
